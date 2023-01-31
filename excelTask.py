@@ -1,16 +1,15 @@
 import pandas as pd
 
-inputFile = "input.xlsx"
+file1 = "Sheet1.xlsx"
+file2 = "Sheet2.xlsx"
+file3 = "Sheet3.xlsx"
 
-sheet1 = pd.read_excel(inputFile,sheet_name= "Sheet1")
-sheet2 = pd.read_excel(inputFile,sheet_name= "Sheet2")
-sheet3 = pd.read_excel(inputFile,sheet_name= "Sheet3")
-
-print(sheet1.head(10),'\n')
-
-print(sheet2.head(),'\n')
-
-print(sheet3.head(),'\n')
+sheet1 = pd.read_excel(file1)
+sheet2 = pd.read_excel(file2)
+sheet3 = pd.read_excel(file3)
+# print(sheet1.head())
+# print(sheet2.head())                              #............Question Number One                         
+# print(sheet3.head())
 
 sheet4 = sheet1.copy()
 
@@ -26,8 +25,7 @@ sheet4 = sheet1.copy()
 # print(sheet2['dept'])
 # print(zip(sheet2['id'],sheet2['dept']))
 
-dept = ["-"]*len(sheet4['id'])
-print('\n', dept, '\n')
+dept = [None]*len(sheet4['id'])
 
 for i,j in zip(sheet2['id'],sheet2['dept']):
     for idx,k in enumerate(sheet4['id']):
@@ -36,7 +34,7 @@ for i,j in zip(sheet2['id'],sheet2['dept']):
 
 sheet4['dept'] = dept
 
-desg = ["-"]*len(sheet4['id'])
+desg = [None]*len(sheet4['id'])
 
 for i,j in zip(sheet3['id'],sheet3['desg']):
     for idx,k in enumerate(sheet4['id']):
@@ -44,7 +42,8 @@ for i,j in zip(sheet3['id'],sheet3['desg']):
             desg[idx] = j
 
 sheet4['desg'] = desg
-sheet4.to_excel("output.xlsx")
-print("File saved successfully",'\n')
 
-print(sheet4.head(10),'\n')                                
+sheet4.to_excel("sheet4.xlsx")
+
+print("File saved succesfully")
+#print(sheet4.head(10))                                

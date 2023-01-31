@@ -1,17 +1,18 @@
-stack = []
 top = 0
 openingBrace = ['{','[']
 closingBrace = ['}',']']
 
-def push(char):
-    global stack,top
-    stack.append(char)
-    top += 1
+# def push(char):
+#     global stack,top
+#     #stack.append(char)
+#     top += 1
 
-def pop():
-    global stack,top
-    stack = stack[:-1]
-    top -= 1                                        
+# def pop():
+#     global stack,top
+#     #stack = stack[:-1]
+#     top -= 1                                        
+
+
 
 inputString = input()
 outputString = ''
@@ -19,10 +20,12 @@ outputString = ''
 for char in inputString:
     #print("Stack is " ,stack, " top is ", top)
     if char in openingBrace:
-        push(char)
+        #push(char)
+        top += 1
         outputString += char+'\n'+'\t'*top
     elif char in closingBrace:
-        pop()
+        #pop()
+        top -= 1
         outputString += '\n'+'\t'*top+char
     elif char==',':
         outputString += char+'\n'+'\t'*top
